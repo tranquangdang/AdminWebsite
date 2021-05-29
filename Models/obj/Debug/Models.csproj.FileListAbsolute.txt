@@ -1,0 +1,16 @@
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\Models.dll.config
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\Models.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\Models.pdb
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\EntityFramework.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\EntityFramework.xml
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\obj\Debug\Models.csproj.CopyComplete
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\obj\Debug\Models.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\obj\Debug\Models.pdb
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\PagedList.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\PagedList.xml
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\obj\Debug\Models.csprojAssemblyReference.cache
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\PagedList.Mvc.dll
+D:\OneDrive\Projects\CSharp\ASPFinal\Models\bin\Debug\PagedList.Mvc.xml

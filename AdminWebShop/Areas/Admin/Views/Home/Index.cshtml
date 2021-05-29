@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Trang quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    <i class="fa fa-dashboard"></i> Tổng quan
+}
+
+<div class="market-updates">
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-1">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Khách hàng</h4>
+                <h4>@ViewBag.NumberOfCustomers</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-2">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-eye"> </i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Sản phẩm đã bán</h4>
+                <h4>@ViewBag.SoldProduct</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-3">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-usd"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Tổng doanh thu</h4>
+                <h4>@String.Format("{0:#,##0₫}", ViewBag.SaleMoney)</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-4">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Đơn hàng</h4>
+                <h4>@ViewBag.TotalOrders</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+
+
+<div class="agileinfo-grap">
+    <div class="agileits-box">
+        <header class="agileits-box-header clearfix">
+            <h3 id="monthYear"></h3>
+            <div class="toolbar">
+
+
+            </div>
+        </header>
+        <div class="agileits-box-body clearfix">
+            <div id="hero-area"></div>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Raw(ViewBag.Revenue)
+
+<script>
+    $(document).ready(function() {
+        var d = new Date();
+        var m = d.getMonth() + 1;
+        var y = d.getFullYear();
+        document.getElementById("monthYear").innerHTML = "Doanh thu tháng " + m + " - " + y;
+    })
+</script>

@@ -1,0 +1,130 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Models.EF.tblProduct>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fas fa-boxes"></i> Quản lý sản phẩm
+}
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Post))
+{
+    <div class="col-lg-12 form-group">
+        <div class="col-md-6">
+            @Html.ActionLink("Tạo mới", "Create", new { controller = "Product" }, new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-md-6">
+            <div class="col-lg-12 in-gp-tb">
+                <div class="input-group">
+                    <input type="text" value="@ViewBag.SearchString" name="keyword" placeholder="Nhập từ khóa cần tìm kiếm" class="form-control" />
+                    <span class="input-group-btn">
+                        <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="col-lg-12 form-group">
+    <table class="table table-striped table-hover table-bordered dataTable sortable">
+        <tr>
+            <th>
+                Mã
+            </th>
+            <th>
+                Danh mục
+            </th>
+            <th>
+                Thương hiệu
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Hình ảnh
+            </th>
+            <th>
+                Chi tiết
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Giảm giá (%)
+            </th>
+            <th>
+                Số lượng (cái)
+            </th>
+            <th>
+                Chỉnh sửa
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.ProductID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblProductCategory.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @{
+                        var ProductName = @item.ProductName;
+                        if (!string.IsNullOrEmpty(item.ProductName))
+                            ProductName = String.Concat(item.ProductName.Take(80)) + "...";
+                    }
+                    @Html.DisplayFor(modelItem => ProductName)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ProductImg))
+                    {
+                        <img src="@Url.Content(item.ProductImg)" height="64" width="64" alt="productImg" />
+                    }
+                </td>
+                <td>
+                    @{
+                        var Intro = @item.ProductName;
+                        if (!string.IsNullOrEmpty(item.ProductName))
+                            Intro = String.Concat(item.Intro.Take(80)) + "...";
+                    }
+                    @Html.DisplayFor(modelItem => Intro)
+                </td>
+                <td>
+                    @{
+                        var UnitPrice = String.Format("{0:#,##0₫}", item.UnitPrice);
+                    }
+                    @Html.DisplayFor(modelItem => UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PerDiscount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyOnHand)
+                </td>
+                <td style="text-align:center">
+                    <a href="~/Admin/Product/Create/@item.ProductID"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <hr />
+                    @Ajax.ActionLink(" ", "Delete", new { @ProductID = item.ProductID }, new AjaxOptions
+                       {
+                            Confirm = "Bạn có muốn xóa sản phẩm này?",
+                            OnComplete = "$('#row_" + item.ProductID + "').remove()",
+                            HttpMethod = "Delete"
+                       }, new { @class = "glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div style="text-align: center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @keyword = @ViewBag.SearchString }))
+    </div>
+
+</div>
